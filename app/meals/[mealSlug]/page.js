@@ -1,14 +1,7 @@
 import Image from "next/image";
 import styles from "./page.module.css";
-import { getMeal, getMeals } from "@/lib/meals";
+import { getMeal } from "@/lib/meals";
 import { notFound } from "next/navigation";
-
-export async function generateStaticParams() {
-  const meals = await getMeals();
-  return meals.map((meal) => ({
-    mealSlug: meal.slug,
-  }));
-}
 
 export async function generateMetadata({ params }) {
   const meal = getMeal(params.mealSlug);
